@@ -54,9 +54,12 @@ Cypress.Commands.add('tests', () => {
     page.getContShoppingBtn().should('exist')
 
     // 10. Review the items in the cart and ensure that the T-shirt is listed with the correct details (name, price,  quantity, etc.).  
-    //  I dont understand the second part of this line(ensuring tshirt is listed with correct details)
 
-    cy.contains('Remove').click()
+    page.getCartDeets().within(() => {
+        cy.contains('Sauce Labs Bolt T-Shirt')
+        cy.contains('Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.')
+        cy.contains('$15.99') 
+    })
 
     //  11. Click the "Checkout" button. 
     page.getChkOutBtn().click()
@@ -88,9 +91,9 @@ Cypress.Commands.add('tests', () => {
         cy.contains('Shipping Information')
         cy.contains('Free Pony Express Delivery!')
         cy.contains('Price Total')
-        cy.contains('Item total: $0')
-        cy.contains('Tax: $0.00')
-        cy.contains('Total: $0.00')
+        cy.contains('Item total: $15.99')
+        cy.contains('Tax: $1.28')
+        cy.contains('Total: $17.27')
     })
      
 

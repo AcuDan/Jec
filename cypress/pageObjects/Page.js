@@ -39,6 +39,9 @@ class Page {
   getCartItems(){
     return cy.get('.cart_quantity')
   }
+  getCartDeets(){
+    return cy.get('.cart_item')
+  }
   getCartLabel(){
     return cy.get('.cart_item_label')
   }
